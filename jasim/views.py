@@ -4,7 +4,10 @@ from . import views
 # Create your views here.
 
 def index(request):
-    return HttpResponse("This is landing page")
+    return render(request, 'index.html', {})
+
+def detail(request):
+    return render(request, 'portfolio-detail.html', {})
 
 def signup(request):
     return HttpResponse("This is signup page")
