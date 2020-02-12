@@ -3,15 +3,28 @@ from django.http import HttpResponse
 from . import views
 # Create your views here.
 
+
 def index(request):
     return render(request, 'index.html', {})
+
+
+def signup(request):
+    return render(request, 'signup.html', {})
+
+
+def login(request):
+    return render(request, 'login.html', {})
+
 
 def detail(request):
     return render(request, 'portfolio-detail.html', {})
 
-def signup(request):
-    return HttpResponse("This is signup page")
 
-def login(request):
-    return HttpResponse("This is login page")
+def project(request):
+    return render(request, 'project.html', {})
+
+
+def review(request):
+    return render(request, 'review.html', {})
+
 
