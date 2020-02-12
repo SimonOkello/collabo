@@ -20,6 +20,10 @@ def detail(request):
     return render(request, 'portfolio-detail.html', {})
 
 
+def profile(request):
+    return render(request, 'profile.html', {})
+
+
 def project(request):
     return render(request, 'project.html', {})
 
