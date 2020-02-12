@@ -1,20 +1,17 @@
-from django import forms
+from django import forms, ModelForm
+from . models import User, Project
 
-class LoginForm(forms.Form):
-  email = forms.EmailField(label='Email')
-  password = forms.CharField(label='Password', max_length=100)
+class LoginForm(forms.ModelForm):
+  class Meta:
+    model = 'User'
+    fields = ('email', 'password')
 
-class SignupForm(forms.Form):
-  username = forms.CharField(label='Username', max_length=100)
-  email = forms.EmailField(label='Email')
-  password = forms.CharField(label='Password', max_length=100)
+class SignupForm(forms.ModelForm):
+  class Meta:
+    model = 'User'
+    fields = ('__all__')
 
-class ProjectForm(forms.Form):
-  title = forms.CharField(label='Project Title', max_length=100)
-  description = forms.TextField(label='Description')
-  created_on = forms.DateField(label='Created on')
-  duration = forms.CharField(label='Duration', max_length=100)
-  client_website = forms.CharField(label='Clients Website', max_length=100)
-  client_name = forms.CharField(label='Client Name', max_length=100)
-  client_email = forms.CharField(label='Client Email', max_length=100)
-  project_url = forms.CharField(label='Project URL', max_length=100)
+class ProjectForm(forms.ModelForm):
+  class Meta:
+    model = 'Project'
+    fields = ('title', 'description', 'created_on', 'duration', 'client_website', 'client_name', 'client_email', 'project_url')
