@@ -529,13 +529,13 @@ select.selectmenu {
 
 .nivo-caption {
   position: absolute;
-  left: 80px;
-  bottom: 20px;
+  left: 33%;
+  bottom: 8%;
   background: #000;
   color: #fff;
-  width: 30%;
+  width: 40%;
   z-index: 8;
-  padding: 20px;
+  padding: 35px;
   opacity: 0.8;
   overflow: hidden;
   display: none;
