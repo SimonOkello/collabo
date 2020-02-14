@@ -7,7 +7,14 @@
 <form method="post" novalidate>
   {% csrf_token %}
   {{ form }}
-  <button type="submit">Submit</button>
+ <div class="control-group">
+   <div class="controls">
+     <button type="submit" class="btn">Sign up</button>
+   </div>
+   <p class="aligncenter margintop20">
+     Already have an account? <a href="#mySignin" data-dismiss="modal" aria-hidden="true" data-toggle="modal">Sign in</a>
+   </p>
+ </div>
 </form>
 </div>
 
