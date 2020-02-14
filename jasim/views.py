@@ -15,7 +15,7 @@ def signup(request):
             pass
     else:
         form = UserCreationForm()
-    return render(request, 'index.html', {'form': form})
+    return render(request, 'signup.html', {'form': form})
 
 
 def login(request):
