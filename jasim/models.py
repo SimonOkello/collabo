@@ -27,6 +27,7 @@ class Project(models.Model):
     added_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="projects")
     title = models.CharField(max_length=100)
     description = models.TextField()
+    photos = models.ImageField(null= True, upload_to='screenshots')
     created_on = models.DateField()
     duration = models.CharField(max_length=100)
     client_website = models.CharField(max_length=100)
