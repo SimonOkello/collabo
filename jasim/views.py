@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from .forms import UserChangeForm, UserCreationForm
-from . import views
+from .forms import RegisterForm
 # Create your views here.
 
 
@@ -10,11 +9,11 @@ def index(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             pass
     else:
-        form = UserCreationForm()
+        form = RegisterForm()
     return render(request, 'signup.html', {'form': form})
 
 
