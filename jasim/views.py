@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .forms import RegisterForm
+from .models import Project
+from django.views.generic import ListView, DetailView
 # Create your views here.
 
 
@@ -21,19 +23,20 @@ def login(request):
     return render(request, 'login.html', {})
 
 
-def detail(request):
-    return render(request, 'project-detail.html', {})
-
-
 def profile(request):
+
     return render(request, 'profile.html', {})
 
 
-def project(request):
-    return render(request, 'project.html', {})
+class ProjectList(ListView):
+    queryset = Project.objects.all().order_by('-created_on')
+    template_name = 'project.html'
+
+
+class ProjectDetail(DetailView):
+    model = Project
+    template_name = 'project-detail.html'
 
 
 def review(request):
     return render(request, 'review.html', {})
-
-

@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .forms import UserAdminCreationForm, UserAdminChangeForm
+from .models import Project
 
 from jasim.models import MyUser
 
@@ -36,10 +37,16 @@ class UserAdmin(BaseUserAdmin):
     ordering = ('email',)
     filter_horizontal = ()
 
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('title', 'duration', 'client_name','project_url')
+    list_filter = ("client_name",)
+    search_fields = ['title', 'client_name']
+    prepopulated_fields = {'client_name': ('title',)}
+
 
 # Register your models here.
 admin.site.register(MyUser, UserAdmin)
-# admin.site.register(Project)
+admin.site.register(Project, ProjectAdmin)
 # admin.site.register(Profile)
 # admin.site.register(Review)
 

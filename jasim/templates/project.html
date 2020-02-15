@@ -15,8 +15,8 @@
         <div class="span8">
           <ul class="breadcrumb">
             <li><a href="#"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
-            <li><a href="{% url 'detail' %}">Profile</a><i class="icon-angle-right"></i></li>
-            <li class="active">Profile detail</li>
+            <li><a href="{% url 'project' %}">Projects</a><i class="icon-angle-right"></i></li>
+            <li class="active">Web Design</li>
           </ul>
         </div>
       </div>
@@ -29,7 +29,7 @@
           <article>
             <h4><b>Web design Projects</b></h4>
             <p>
-              This are projects developed using HTML5, CSS3, Javascript.
+              Web based projects are projects/application which are deployed on world wide web (Internet) and these type of projects can be accessed by any device, any location, any configuration with just a url like <www class="google com"></www>This are projects developed using HTML5, CSS3, Javascript.
             </p>
 
             <br>
@@ -41,40 +41,25 @@
               </div>
             </div>
             <!-- end divider -->
-
             <h4><b>Projects</b></h4>
               <!-- <h4>Our expertise</h4> -->
-              <div style="background-color: aliceblue; padding: 10px;">
-              <label><h5><a href="{% url 'detail' %}" style="text-decoration: none;">Zuri</a></h5></label>
-              <div>
-                <p>This is an AI customer care bot </p>
-                </div>
+              {% if project_list%}
+              {% for project in project_list %}
+              <div class="card-body" style="background-color: aliceblue; padding: 10px;">
+                <h5  class="card-title">{{ project.title }}</a></h5>
+                <p class=" text-muted">{{project.client_name}}</p>
+                <p class="card-text ">{{project.description|slice:":200"}}</p>
+                <a href="{% url 'detail' project.id %}" class="btn btn-primary">Read More</a>
+                
             </div>
             <br>
-            <div style="background-color:aliceblue;padding: 10px;" class="project-list">
-              <label><h5><a href="{% url 'detail' %}" style="text-decoration: none;">Siri</a></h5></label>
-              <div>
-                <p>This is a Personal Assistant for Iphones</p>
-                </div>
-              </div>
-              <br>
-              <div style="background-color: aliceblue; padding: 10px;" class="project-list">
-              <label><h5><a href="{% url 'detail' %}" style="text-decoration: none;">Cortana</a></h5></label>
-              <div>
-                <p>This is a Personal Assistant for Windows devices </p>
-                </div>
-              </div>
-              <br>
-              <div style="background-color: aliceblue; padding: 10px;" class="project-list">
-              <label><h5><a href="{% url 'detail' %}" style="text-decoration: none;">Jexi</a></h5></label>
-              <div>
-                <p>This is a Personal Assistant for smartphones </p>
-                </div>
-              </div>
-           
+            {% endfor %}
+            {% else %}
+            <h4>There are no projects at the moment</h4>
+            {% endif %}
+                      
 
-            <br>
-            <br>
+            
             <!-- divider -->
             <div class="row">
               <div class="span7">
