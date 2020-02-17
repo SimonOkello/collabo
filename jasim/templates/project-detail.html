@@ -6,7 +6,11 @@
         <div class="row">
           <div class="span4">
             <div class="inner-heading">
-              <h2>{{project.title}}</h2>
+              <ul class="breadcrumb">
+                <li><h3><a href="#">{{project.category}}</a><i class="icon-angle-right"></i></h3></li>
+                <li class="active"><h4 style="color:#ffffff;">{{project.title}}</h4></li>
+              </ul>
+              <!-- <h2></h2> -->
             </div>
           </div>
           <div class="span8">
@@ -56,7 +60,7 @@
                 <h5 class="widgetheading">Project Info.</h5>
                 <ul class="folio-detail">
                   <li><label style="margin-right:10px;">Project name :</label> {{project.title}}</li>
-                  <li><label style="margin-right:40px;">Category :</label> Web design</li>
+                  <li><label style="margin-right:40px;">Category :</label>{{project.category}}</li>
                   <li><label style="margin-right:60px;">Client :</label> {{project.client_name}}</li>
                   <li><label style="margin-right:20px;">Project date :</label> {{project.created_on}}</li>
                   <li><label style="margin-right:50px;">Duration:</label>{{project.duration}}</li>

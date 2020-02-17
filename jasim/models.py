@@ -99,7 +99,14 @@ class MyUser(AbstractBaseUser):
         """Is the user active?"""
         return self.active
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.name
 
 
 class Profile(models.Model):
@@ -114,6 +121,7 @@ class Profile(models.Model):
 
 class Project(models.Model):
     added_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, null=True, related_name="projects")
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null = True, related_name='categories')
     title = models.CharField(max_length=100)
     description = models.TextField()
     photos = models.ImageField(null= True, upload_to='screenshots')
