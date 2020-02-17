@@ -55,7 +55,7 @@
             <br>
             {% endfor %}
             {% else %}
-            <h4>There are no projects at the moment</h4>
+            <h4>There are no projects for this category</h4>
             {% endif %}
                       
 
@@ -143,22 +143,18 @@
             
             <div class="solidline">
 
-
-            
-
           </article>
         </div>
         <div class="span4">
           <aside class="right-sidebar">
             <div class="widget">
               <h5 class="widgetheading"><b>Project Categories</b></h5>
+              {% for category in category_list %}
               <ul class="cat">
-                <li><i class="icon-angle-right"></i><a href="#">Web design</a><span> (20)</span></li>
-                <li><i class="icon-angle-right"></i><a href="#">Online business</a><span> (11)</span></li>
-                <li><i class="icon-angle-right"></i><a href="#">Marketing strategy</a><span> (9)</span></li>
-                <li><i class="icon-angle-right"></i><a href="#">Technology</a><span> (12)</span></li>
-                <li><i class="icon-angle-right"></i><a href="#">About finance</a><span> (18)</span></li>
+                <li><i class="icon-angle-right"></i><a href="#">{{category.name}}</a><span></span></li>
               </ul>
+              {% endfor %}
+              
             </div>
             <div class="widget">
               <h5 class="widgetheading"><b>All Reviews</b></h5>
