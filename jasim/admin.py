@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .forms import UserAdminCreationForm, UserAdminChangeForm
-from .models import Project, Category
+from .models import Project, Category, Screenshot
 
 from jasim.models import MyUser
 
@@ -37,11 +37,18 @@ class UserAdmin(BaseUserAdmin):
     ordering = ('email',)
     filter_horizontal = ()
 
+class ScreenshotInline(admin.StackedInline):
+    model = Screenshot
+    extra = 2
+
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('category','title', 'duration', 'client_name','project_url')
+    list_display = ('category', 'title', 'duration',
+                    'client_name', 'project_url')
     list_filter = ("client_name",)
     search_fields = ['title', 'client_name']
     prepopulated_fields = {'client_name': ('title',)}
+    inlines = [ScreenshotInline]
+    
 
 
 # Register your models here.

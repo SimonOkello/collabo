@@ -124,7 +124,7 @@ class Project(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null = True, related_name='categories')
     title = models.CharField(max_length=100)
     description = models.TextField()
-    photos = models.ImageField(null= True, upload_to='screenshots')
+    
     created_on = models.DateField()
     duration = models.CharField(max_length=100)
     client_website = models.CharField(max_length=100)
@@ -138,6 +138,12 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+class Screenshot(models.Model):
+    project = models.ForeignKey(Project, on_delete = models.CASCADE, related_name='images')
+    photos = models.ImageField(null= True, upload_to='screenshots')
+
+    def __str__(self):
+        return '%s - %s ' % (self.project, self.photos)
 
 class Review(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True, related_name="reviews")
