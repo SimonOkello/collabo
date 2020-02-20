@@ -34,11 +34,6 @@
       <div class="hidden-top-inner container">
         <div class="row">
           <div class="span12">
-            <ul>
-              <li><strong>We are available for any custom works this month</strong></li>
-              <li>Main office: Springville center X264, Park Ave S.01</li>
-              <li>Call us <i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891</li>
-            </ul>
           </div>
         </div>
       </div>
@@ -48,17 +43,18 @@
     <header>
       <div class="container ">
         <!-- hidden top area toggle link -->
-        <div id="header-hidden-link">
-          <a href="#" class="toggle-link" title="Click me you'll get a surprise" data-target=".hidden-top"><i></i>Open</a>
-        </div>
         <!-- end toggle link -->
         <div class="row nomargin">
           <div class="span12">
             <div class="headnav">
+              <!-- <form class="form-horizontal">
+                <input type="text" name="search" placeholder="Search">
+                <input type="submit" name="submit" value="Search" class="btn btn-danger">
+              </form>
               <ul>
                 <li><a href="#mySignup" data-toggle="modal"><i class="icon-user"></i> Sign up</a></li>
                 <li><a href="#mySignin" data-toggle="modal">Sign in</a></li>
-              </ul>
+              </ul> -->
             </div>
             <!-- Signup Modal -->
             <div id="mySignup" class="modal styled hide fade" tabindex="-1" role="dialog" aria-labelledby="mySignupModalLabel" aria-hidden="true">
@@ -161,8 +157,8 @@
         <div class="row">
           <div class="span4">
             <div class="logo">
-              <a href="index.html"><img src="{% static 'img/logo.png' %}" alt="" class="logo" /></a>
-              <h1>Flat and trendy bootstrap template</h1>
+              <a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt="" class="logo" /></a>
+              <h1>Show off your skills</h1>
             </div>
           </div>
           <div class="span8">
@@ -170,60 +166,27 @@
               <div class="navigation">
                 <nav>
                   <ul class="nav topnav">
-                    <li class="dropdown active">
-                      <a href="{% url 'index' %}">Home <i class="icon-angle-down"></i></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="index-alt2.html">Homepage 2</a></li>
-                        <li><a href="index-alt3.html">Homepage 3</a></li>
-                      </ul>
+                    <li class="active">
+                      <a href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'login' %}">Create your portfolio</a>
                     </li>
                     <li class="dropdown">
-                      <a href="#">Features <i class="icon-angle-down"></i></a>
+                      <a href="#">Portfolios <i class="icon-angle-down"></i></a>
                       <ul class="dropdown-menu">
-                        <li><a href="typography.html">Typography</a></li>
-                        <li><a href="table.html">Table</a></li>
-                        <li><a href="components.html">Components</a></li>
-                        <li><a href="animations.html">56 Animations</a></li>
-                        <li><a href="icons.html">Icons</a></li>
-                        <li><a href="icon-variations.html">Icon variations</a></li>
-                        <li class="dropdown"><a href="#">3 Sliders <i class="icon-angle-right"></i></a>
-                          <ul class="dropdown-menu sub-menu-level1">
-                            <li><a href="index.html">Nivo slider</a></li>
-                            <li><a href="index-alt2.html">Slit slider</a></li>
-                            <li><a href="index-alt3.html">Parallax slider</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#">Pages <i class="icon-angle-down"></i></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="about.html">About us</a></li>
-                        <li><a href="pricingbox.html">Pricing boxes</a></li>
-                        <li><a href="testimonials.html">Testimonials</a></li>
-                        <li><a href="404.html">404</a></li>
-                      </ul>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#">Portfolio <i class="icon-angle-down"></i></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="portfolio-2cols.html">Portfolio 2 columns</a></li>
-                        <li><a href="portfolio-3cols.html">Portfolio 3 columns</a></li>
-                        <li><a href="portfolio-4cols.html">Portfolio 4 columns</a></li>
-                        <li><a href="{% url 'project' %}">Portfolio detail</a></li>
-                      </ul>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#">Blog <i class="icon-angle-down"></i></a>
-                      <ul class="dropdown-menu">
-                        <li><a href="blog-left-sidebar.html">Blog left sidebar</a></li>
-                        <li><a href="blog-right-sidebar.html">Blog right sidebar</a></li>
-                        <li><a href="post-left-sidebar.html">Post left sidebar</a></li>
-                        <li><a href="post-right-sidebar.html">Post right sidebar</a></li>
+                        <li><a href="{% url 'project' %}">Featured portfolios</a></li>
+                        <li><a href="#">Premium portfolios</a></li>
                       </ul>
                     </li>
                     <li>
-                      <a href="contact.html">Contact </a>
+                      <a href="#">About Us</a>
+                    </li>
+                    <li>
+                      <a href="#">Contact</a>
+                    </li>
+                    <li>
+                      <a href="#">Blog </a>
                     </li>
                   </ul>
                 </nav>
@@ -278,14 +241,14 @@
             </div>
           </div>
           <div class="span3">
-            <div class="widget">
+            <!-- <div class="widget">
               <h5 class="widgetheading">Flickr photostream</h5>
               <div class="flickr_badge">
                 <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
               </div>
               <div class="clear">
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="span3">
             <div class="widget">
@@ -309,16 +272,10 @@
             <div class="span6">
               <div class="copyright">
                 <p>
-                  <span>&copy; Flattern - All right reserved.</span>
+                  <span>Portfolio &copy;2020. All right reserved.</span>
                 </p>
                 <div class="credits">
-                  <!--
-                    All the links in the footer should remain intact.
-                    You can delete the links only if you purchased the pro version.
-                    Licensing information: https://bootstrapmade.com/license/
-                    Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Flattern
-                  -->
-                  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                  Designed and Made by  <a href="https://jasim.com/" target="_blank">JASIM</a>
                 </div>
               </div>
             </div>
