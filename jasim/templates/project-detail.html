@@ -34,18 +34,15 @@
                 </div>
                 <!-- start flexslider -->
                 <div class="flexslider">
+                  
                   <ul class="slides">
+                    {% for image in project.images.all %}
                     <li>
-
-                      <img src="{{object.photos.url}}" alt="" />
+                      <img src="{{image.photos.url}}" alt="" />
                     </li>
-                    <li>
-                      <img src="{{object.photos.url}}" alt="" />
-                    </li>
-                    <li>
-                      <img src="{{object.photos.url}}" alt="" />
-                    </li>
+                    {% endfor %}
                   </ul>
+                 
                 </div>
                 <!-- end flexslider -->
               </div>
