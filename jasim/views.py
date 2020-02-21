@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .forms import RegisterForm
-from .models import Project,Category
+from .models import Project, Category
 from django.views.generic import ListView, DetailView
 # Create your views here.
 
@@ -27,10 +27,10 @@ def profile(request):
 
     return render(request, 'profile.html', {})
 
+
 class CategoryList(ListView):
     model = Project
     template_name = 'category.html'
-    queryset= Category.objects.all()
 
     def get_queryset(self):
         return Project.objects.filter(category_id=self.kwargs.get('pk'))

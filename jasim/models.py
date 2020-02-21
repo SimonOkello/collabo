@@ -79,7 +79,7 @@ class MyUser(AbstractBaseUser):
         # Simplest possible answer: Yes, always
         return True
 
-    def  has_module_perms(self, app_label):
+    def has_module_perms(self, app_label):
         "Does the user have permissions to view the app `app_label`?"
         # Simplest possible answer: Yes, always
         return True
@@ -98,6 +98,7 @@ class MyUser(AbstractBaseUser):
     def is_active(self):
         """Is the user active?"""
         return self.active
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -120,11 +121,12 @@ class Profile(models.Model):
 
 
 class Project(models.Model):
-    added_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, null=True, related_name="projects")
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null = True, related_name='categories')
+    added_by = models.ForeignKey(
+        MyUser, on_delete=models.CASCADE, null=True, related_name="projects")
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, null=True, related_name='categories')
     title = models.CharField(max_length=100)
     description = models.TextField()
-    photos = models.ImageField(null= True, upload_to='screenshots')
     created_on = models.DateField()
     duration = models.CharField(max_length=100)
     client_website = models.CharField(max_length=100)
@@ -137,10 +139,21 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+        
+
+
+class Screenshot(models.Model):
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, related_name='images')
+    photos = models.ImageField(null=True, upload_to='screenshots')
+
+    def __str__(self):
+        return '%s - %s ' % (self.project, self.photos)
 
 
 class Review(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True, related_name="reviews")
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, null=True, related_name="reviews")
     client = models.CharField(max_length=100)
     review_description = models.TextField()
     added_on = models.DateTimeField(default=timezone.now)
@@ -150,6 +163,3 @@ class Review(models.Model):
 
     def __str__(self):
         return self.review_description
-
-
-
