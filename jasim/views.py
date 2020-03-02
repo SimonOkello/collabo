@@ -28,17 +28,21 @@ def profile(request):
     return render(request, 'profile.html', {})
 
 
-class CategoryList(ListView):
-    model = Project
-    template_name = 'category.html'
+def category(request, **kwargs):
+    context = {}
+    context['category_projects'] = Project.objects.filter(
+        category_id=kwargs.get('pk'))
+    context['cat_lists'] = Category.objects.all()
 
-    def get_queryset(self):
-        return Project.objects.filter(category_id=self.kwargs.get('pk'))
+    return render(request, 'category.html', context)
 
 
-class ProjectList(ListView):
-    queryset = Project.objects.all().order_by('-created_on')
-    template_name = 'project.html'
+def project(request):
+    context = {}
+    context['projects_lists'] = Project.objects.all().order_by('-created_on')
+    context['cat_lists'] = Category.objects.all()
+
+    return render(request, 'project.html', context)
 
 
 class ProjectDetail(DetailView):
