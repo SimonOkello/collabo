@@ -30,7 +30,7 @@ SECRET_KEY = 't1brzj8b7&ld)f=bo)-f!!9vdq_(lb%4gywwi)vn95tes&fgya'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['newcollabo.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
