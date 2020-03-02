@@ -27,5 +27,5 @@ temp/
 # Text backup files
 *.bak
 
-# Database
+# sqlite Database
 *.sqlite3
