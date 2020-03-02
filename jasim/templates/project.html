@@ -43,8 +43,8 @@
             <!-- end divider -->
             <h4><b>Projects</b></h4>
               <!-- <h4>Our expertise</h4> -->
-              {% if project_list%}
-              {% for project in project_list %}
+              {% if projects_lists %}
+              {% for project in projects_lists %}
               <div class="card-body" style="background-color: aliceblue; padding: 10px;">
                 <h5  class="card-title">{{ project.title }}</a></h5>
                 <p class=" text-muted">{{project.client_name}}</p>
@@ -152,13 +152,11 @@
           <aside class="right-sidebar">
             <div class="widget">
               <h5 class="widgetheading"><b>Project Categories</b></h5>
+              {% for category in cat_lists %}
               <ul class="cat">
-                <li><i class="icon-angle-right"></i><a href="#">Web design</a><span> (20)</span></li>
-                <li><i class="icon-angle-right"></i><a href="#">Online business</a><span> (11)</span></li>
-                <li><i class="icon-angle-right"></i><a href="#">Marketing strategy</a><span> (9)</span></li>
-                <li><i class="icon-angle-right"></i><a href="#">Technology</a><span> (12)</span></li>
-                <li><i class="icon-angle-right"></i><a href="#">About finance</a><span> (18)</span></li>
+                <li><i class="icon-angle-right"></i><a href="{% url 'category' category.id %}">{{category.name}}</a><span></span></li>
               </ul>
+              {% endfor %}
             </div>
             <div class="widget">
               <h5 class="widgetheading"><b>All Reviews</b></h5>
