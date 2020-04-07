@@ -8,15 +8,16 @@ from django.contrib.auth.models import (
 
 
 class MyUserManager(BaseUserManager):
-    def create_user(self, email, password=None):
+    def create_user(self, username,email, password=None):
         """
         Creates and saves a User with the given email and password
         """
-        if not email:
-            raise ValueError('Users must have an email address!')
+        if not username:
+            raise ValueError('Users must have a username!')
 
+        email = self.normalize_email(email)
         user = self.model(
-            email=self.normalize_email(email)
+            username=username, email=email
         )
 
         user.set_password(password)
@@ -52,6 +53,7 @@ class MyUser(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
+    username = models.CharField(max_length=255, unique=True, default='')
     active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)  # a admin user; non super-user
     admin = models.BooleanField(default=False)  # a superuser

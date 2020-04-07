@@ -1,6 +1,6 @@
 from django import forms
 
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.contrib.auth.forms import ReadOnlyPasswordHashField, UserCreationForm
 
 from .models import MyUser, Profile, Project
 
@@ -8,16 +8,25 @@ from .models import MyUser, Profile, Project
 class LoginForm(forms.ModelForm):
     class Meta:
         model = MyUser
-        fields = ('email', 'password')
+        fields = ('username', 'password')
 
 
-class RegisterForm(forms.ModelForm):
+class RegisterForm(UserCreationForm):
+    username = forms.CharField(max_length=30)
     password = forms.CharField(widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
 
     class Meta:
         model = MyUser
-        fields = ('email',)
+        fields = ('username','email',)
+
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        qs = MyUser.objects.filter(username=username)
+        if qs.exists():
+            raise forms.ValidationError("Username already taken!")
+        return username
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
